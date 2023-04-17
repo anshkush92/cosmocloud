@@ -19,7 +19,7 @@ const Field = () => {
   return (
     <label className='group-hover:bg-gray-200'>
       <input
-        className='h-9 px-3 py-1 rounded-lg bg-gray-100 focus:bg-whitetext-red-400 focus:outline-none'
+        className='h-9 px-3 py-1 rounded-lg bg-gray-100 focus:bg-white focus:outline-none'
         type='text'
         value={value}
         onChange={(event) => handleChange(event)}

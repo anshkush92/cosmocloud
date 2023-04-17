@@ -18,7 +18,7 @@ const Row = () => {
   };
 
   return (
-    <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 my-4 p-4 border-b border-gray-500 gap-4 items-center justify-between'>
+    <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 my-1 p-4 border-b-2 border-gray-300 gap-4 items-center justify-between'>
       <div className='flex'>
         <Field />
         <DataTypes
