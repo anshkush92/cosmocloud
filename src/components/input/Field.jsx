@@ -5,7 +5,7 @@ const Field = () => {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log('Input Form changed');
+    console.log('Input Form changed, current value :', event.target.value);
   };
 
   const handleBlur = (event) => {
