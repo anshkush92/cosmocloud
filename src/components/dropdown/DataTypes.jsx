@@ -2,18 +2,15 @@ import { useState } from 'react';
 
 import dataTypes from '../../constants/dataTypes';
 
-const DataTypes = () => {
+const DataTypes = ({ currentDataType, changeCurrentDataType }) => {
   const [isHidden, setIsHidden] = useState(false);
-  const [currentDataType, setCurrentDataType] = useState(
-    dataTypes[0].toUpperCase()
-  );
 
   const toggleDropDown = () => {
     setIsHidden((previousState) => !previousState);
   };
 
   const handleCurrentDataType = (dataType) => {
-    setCurrentDataType(dataType.toUpperCase());
+    changeCurrentDataType(dataType);
     setIsHidden(true);
   };
 
