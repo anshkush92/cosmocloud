@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const Field = () => {
-  const [value, setValue] = useState('Test');
+const Field = ({ body }) => {
+  const [value, setValue] = useState(body);
 
   const handleChange = (event) => {
     setValue(event.target.value);

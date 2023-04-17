@@ -38,7 +38,14 @@ const initialState = {
 const fieldNameTypeSlice = createSlice({
   name: 'fieldNameType',
   initialState,
-  reducers: {},
+  reducers: {
+    addFieldNameType: (state, action) => {
+      console.log('action.payload', action.payload);
+      state.items.push(action.payload);
+    },
+  },
 });
+
+export const { addFieldNameType } = fieldNameTypeSlice.actions;
 
 export default fieldNameTypeSlice.reducer;
