@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const { items } = useSelector((state) => state.fieldNameType);
+  console.log('🚀 ~ file: App.js:7 ~ App ~ items:', items);
 
   return (
     <div className='flex flex-col gap-1'>

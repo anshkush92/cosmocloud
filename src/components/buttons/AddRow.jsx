@@ -7,7 +7,13 @@ const AddRow = () => {
 
   const handleClick = () => {
     console.log('Add row button clicked');
-    dispatch(addFieldNameType({ body: 'Test', dataType: 'number' }));
+
+    dispatch(
+      addFieldNameType({
+        body: 'Test',
+        dataType: 'number',
+      })
+    );
   };
 
   return (
