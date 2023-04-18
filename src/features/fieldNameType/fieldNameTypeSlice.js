@@ -9,14 +9,17 @@ const initialState = {
       dataType: 'object',
       items: [
         {
+          id: 11,
           body: 'name',
           dataType: 'object',
           items: [
             {
+              id: 111,
               body: 'firstName',
               dataType: 'string',
             },
             {
+              id: 112,
               body: 'lastName',
               dataType: 'string',
             },
@@ -25,10 +28,12 @@ const initialState = {
       ],
     },
     {
+      id: 2,
       body: 'order',
       dataType: 'string',
     },
     {
+      id: 3,
       body: 'class',
       dataType: 'boolean',
     },
