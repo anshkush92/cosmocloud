@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { handleEditRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 
 const Field = ({ item }) => {
+  const dispatch = useDispatch();
   const { body } = item;
-  const [value, setValue] = useState(body);
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    dispatch(handleEditRow({ ...item, body: event.target.value }));
     console.log('Input Form changed, current value :', event.target.value);
   };
 
@@ -22,7 +23,7 @@ const Field = ({ item }) => {
       <input
         className='h-9 px-3 py-1 rounded-lg bg-gray-100 focus:bg-white focus:outline-none'
         type='text'
-        value={value}
+        value={body}
         onChange={(event) => handleChange(event)}
         onKeyDown={(event) => handleBlur(event)}
       />
