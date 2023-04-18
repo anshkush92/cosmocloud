@@ -78,10 +78,6 @@ const fieldNameTypeSlice = createSlice({
 
       // Check if parent row exists
       const parentRow = findRowById(id, items);
-      console.log(
-        '🚀 ~ file: fieldNameTypeSlice.js:75 ~ parentRow:',
-        parentRow
-      );
 
       // If parent row exists, add new row to its items otherwise add new row to items
       if (parentRow) {
@@ -102,31 +98,26 @@ const fieldNameTypeSlice = createSlice({
       const { items } = state;
       const { id } = action.payload;
 
-      // Recursive function to delete row by id
       const deleteRowById = (id, items) => {
         for (let i = 0; i < items.length; i++) {
           if (items[i].id === id) {
-            items.splice(i, 1);
-            return;
+            console.log('Found Row', i);
+            items.splice(i, 1); // Delete row
+            return true; // Return true when row is found and deleted
           }
           if (items[i].items) {
-            deleteRowById(id, items[i].items);
+            // Recursively call deleteRowById for nested items
+            if (deleteRowById(id, items[i].items)) {
+              return true; // Return true if row is found and deleted in nested items
+            }
           }
         }
-        return false;
+        return false; // Return false if row is not found
       };
 
       deleteRowById(id, items);
-      // const parentRow = state.items.find((item) => item.id === id);
-      // console.log(
-      //   '🚀 ~ file: fieldNameTypeSlice.js:109 ~ parentRow:',
-      //   parentRow
-      // );
 
-      // if (parentRow) {
-      // }
-
-      console.log('Handle Delete Row', state, action.payload);
+      console.log('Handle Delete Row', state, 'Action.payload', action.payload);
     },
   },
 });

@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { handleDeleteRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 
 const DeleteRow = ({ item }) => {
+  const { items } = useSelector((state) => state.fieldNameType);
+  console.log('🚀 ~ file: DeleteRow.jsx:8 ~ DeleteRow ~ items:', items);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(handleDeleteRow({ id: item.id, item }));
-    console.log('Delete row button clicked');
+    dispatch(handleDeleteRow({ id: item?.id }));
+    console.log('Delete row button clicked', item?.id);
   };
 
   return (
