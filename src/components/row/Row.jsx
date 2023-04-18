@@ -6,42 +6,21 @@ import Toggle from '../toggle/Toggle';
 import DataTypes from '../dropdown/DataTypes';
 import Field from '../input/Field';
 
-import { useDispatch } from 'react-redux';
-import {
-  handleInsertRow,
-  handleEditRow,
-  handleDeleteRow,
-} from '../../features/fieldNameType/fieldNameTypeSlice';
-
 import dataTypes from '../../constants/dataTypes';
 
 const Row = ({ item }) => {
-  const dispatch = useDispatch();
-  const { dataType, items } = item;
-  // console.log('🚀 ~ file: Row.jsx:21 ~ Row ~ item:', item);
-
-  const [currentDataType, setCurrentDataType] = useState(
-    dataType.toUpperCase()
-  );
-
-  const changeCurrentDataType = (dataType) => {
-    setCurrentDataType(dataType.toUpperCase());
-  };
+  const { dataType: currentDataType, items } = item;
 
   return (
     <>
       <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 p-4 border-b-2 border-gray-300 gap-4 items-center justify-between'>
         <div className='flex'>
           <Field item={item} />
-          <DataTypes
-            changeCurrentDataType={changeCurrentDataType}
-            currentDataType={currentDataType}
-            item={item}
-          />
+          <DataTypes item={item} />
         </div>
         <div className='items-center hidden gap-4 group-hover:flex'>
           <Toggle item={item} />
-          {currentDataType === dataTypes[3].toUpperCase() && (
+          {currentDataType.toUpperCase() === dataTypes[3].toUpperCase() && (
             <AddRow item={item} />
           )}
           <DeleteRow item={item} />

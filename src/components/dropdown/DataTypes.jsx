@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { handleEditRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 import dataTypes from '../../constants/dataTypes';
 
-const DataTypes = ({ currentDataType, changeCurrentDataType, item }) => {
+const DataTypes = ({ item }) => {
+  const { dataType: currentDataType } = item;
   const dispatch = useDispatch();
   const [isHidden, setIsHidden] = useState(true);
 
@@ -12,7 +13,6 @@ const DataTypes = ({ currentDataType, changeCurrentDataType, item }) => {
   };
 
   const handleCurrentDataType = (dataType) => {
-    changeCurrentDataType(dataType);
     setIsHidden(true);
     console.log(
       '🚀 ~ file: DataTypes.jsx:8 ~ handleCurrentDataType ~ item',
@@ -28,7 +28,7 @@ const DataTypes = ({ currentDataType, changeCurrentDataType, item }) => {
         className='bg-gray-200 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center'
         type='button'
       >
-        {currentDataType}
+        {currentDataType.toUpperCase()}
         <svg
           className='w-4 h-4 ml-2'
           fill='none'
