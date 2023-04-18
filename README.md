@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+## Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Create interface like this](https://res.cloudinary.com/dicbnntfh/image/upload/v1681845578/spotify-clone/task_jcilf4.png)
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+1. Link
+2. [Video](https://youtu.be/0Up4vv2GGnM)
 
-### `npm start`
+## Task
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [x] Create such component
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847287/spotify-clone/task_kunepm.png)
+- [x] Should be able to render interface if some form of data is given
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847464/spotify-clone/task_d1nk5g.png)
+- [x] User should be able to edit name of a field
+      Original
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847287/spotify-clone/task_kunepm.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+New
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847672/spotify-clone/task_ksu0zd.png)
 
-### `npm test`
+- [x] User should be able to add more fields
+      Original
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847287/spotify-clone/task_kunepm.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+New
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847777/spotify-clone/task_a95wgz.png)
 
-### `npm run build`
+- [x] User should be able to delete a field
+      Original
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847287/spotify-clone/task_kunepm.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+New - Person field got deleted
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847836/spotify-clone/task_pk0mfm.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] Users should be able to add nested fields to object type.
+      Original
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847287/spotify-clone/task_kunepm.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+New
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681847975/spotify-clone/task_t5go43.png)
 
-### `npm run eject`
+- [x] There should be a save button which console the updated data - **_Enter key works as the save button_**
+      ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681848069/spotify-clone/task_dweheq.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<hr>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Guideline
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Assume a Schema for this, how you will represent this data. Write that down.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> Schema for the above interface - Follows recursion as you can see that the nested rows have items[]
+> ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681845847/spotify-clone/task_ismasa.png)
 
-## Learn More
+2. Write down how you will handle this, what components you will create.
+   `C - represents the component that I have divided into`
+   ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681846081/spotify-clone/task_t8m0ff.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`To understand the component structure better, I have marked which components refers to which in the code. C1 - C1 - row like this for every other component`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681846233/spotify-clone/task_qcdms3.png) 4. Start small. Create a component which can render this data.
+`First I started with creating all the components, then combining it together with the help of the redux`
 
-### Code Splitting
+5. Add editable input field and update the data
+   `I used redux to manage the state of the app, and use the reducers to change the state of the row`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+6. Add a way to add more rows
+   `To add more rows, first we have have to know the parentIndex where we have to add the child, we find the parentIndex by recursion. After we know the index, we just have to push the child/nested Row in the parent items[].`
 
-### Analyzing the Bundle Size
+![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681846631/spotify-clone/task_ggxyep.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+8. Add a way to delete rows
+   `To delete the row, we need to find the ID of the row which we have to delete in the tree, which can be easily done through recursion`
+   ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681846765/spotify-clone/task_rtbn1y.png)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+9. Add a way to update the data in the rows
+   `To update the data, we find need to find the ID of the row to which we want to perform the update which can be easily done through recursion, then the data is updated with the help of the reducers `
+   ![enter image description here](https://res.cloudinary.com/dicbnntfh/image/upload/v1681846869/spotify-clone/task_ubsitp.png)
