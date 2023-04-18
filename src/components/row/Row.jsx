@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import AddRow from '../buttons/AddRow';
 import DeleteRow from '../buttons/DeleteRow';
 import Toggle from '../toggle/Toggle';
@@ -8,13 +6,15 @@ import Field from '../input/Field';
 
 import dataTypes from '../../constants/dataTypes';
 
-const Row = ({ item }) => {
+const Row = ({ item, index }) => {
   const { dataType: currentDataType, items } = item;
+  console.log('🚀 ~ file: Row.jsx:13 ~ Row ~ index:', index);
 
   return (
     <>
-      <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 p-4 border-b-2 border-gray-300 gap-4 items-center justify-between'>
-        <div className='flex'>
+      <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 p-2 border-b-2 border-gray-300 gap-4 items-center justify-between'>
+        <div className='flex items-center'>
+          {index && <div className='text-gray-500 text-lg mr-3'>{index}. </div>}
           <Field item={item} />
           <DataTypes item={item} />
         </div>
@@ -26,8 +26,7 @@ const Row = ({ item }) => {
           <DeleteRow item={item} />
         </div>
       </div>
-
-      <div className='pl-12 mt-2'>
+      <div className='pl-8 mt-2'>
         {items?.map((item, index) => (
           <Row item={item} key={index} />
         ))}
