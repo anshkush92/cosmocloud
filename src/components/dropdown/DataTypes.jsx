@@ -1,8 +1,10 @@
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { handleEditRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 import dataTypes from '../../constants/dataTypes';
 
-const DataTypes = ({ currentDataType, changeCurrentDataType }) => {
+const DataTypes = ({ currentDataType, changeCurrentDataType, item }) => {
+  const dispatch = useDispatch();
   const [isHidden, setIsHidden] = useState(true);
 
   const toggleDropDown = () => {
@@ -12,6 +14,7 @@ const DataTypes = ({ currentDataType, changeCurrentDataType }) => {
   const handleCurrentDataType = (dataType) => {
     changeCurrentDataType(dataType);
     setIsHidden(true);
+    dispatch(handleEditRow({ ...item, dataType }));
   };
 
   return (
