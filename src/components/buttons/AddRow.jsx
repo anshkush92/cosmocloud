@@ -7,7 +7,6 @@ const AddRow = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log('Add row button clicked');
     dispatch(
       handleInsertRow({
         parentId: item?.id,

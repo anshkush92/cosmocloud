@@ -14,10 +14,6 @@ const DataTypes = ({ item }) => {
 
   const handleCurrentDataType = (dataType) => {
     setIsHidden(true);
-    console.log(
-      '🚀 ~ file: DataTypes.jsx:8 ~ handleCurrentDataType ~ item',
-      dataType
-    );
     dispatch(handleEditRow({ ...item, dataType }));
   };
 

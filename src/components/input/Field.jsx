@@ -7,7 +7,6 @@ const Field = ({ item }) => {
 
   const handleChange = (event) => {
     dispatch(handleEditRow({ ...item, body: event.target.value }));
-    console.log('Input Form changed, current value :', event.target.value);
   };
 
   const handleBlur = (event) => {
