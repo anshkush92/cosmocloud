@@ -1,8 +1,20 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { handleInsertRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 
-const AddRow = () => {
+const AddRow = ({ item }) => {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    console.log('Add row button clicked');
+    dispatch(
+      handleInsertRow({
+        parentId: item?.id,
+        id: uuidv4(),
+        body: 'addName',
+        dataType: 'String',
+      })
+    );
   };
 
   return (

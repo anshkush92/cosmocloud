@@ -1,20 +1,20 @@
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { handleEditRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 import dataTypes from '../../constants/dataTypes';
 
-const DataTypes = () => {
-  const [isHidden, setIsHidden] = useState(false);
-  const [currentDataType, setCurrentDataType] = useState(
-    dataTypes[0].toUpperCase()
-  );
+const DataTypes = ({ item }) => {
+  const { dataType: currentDataType } = item;
+  const dispatch = useDispatch();
+  const [isHidden, setIsHidden] = useState(true);
 
   const toggleDropDown = () => {
     setIsHidden((previousState) => !previousState);
   };
 
   const handleCurrentDataType = (dataType) => {
-    setCurrentDataType(dataType.toUpperCase());
     setIsHidden(true);
+    dispatch(handleEditRow({ ...item, dataType }));
   };
 
   return (
@@ -24,7 +24,7 @@ const DataTypes = () => {
         className='bg-gray-200 font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center'
         type='button'
       >
-        {currentDataType}
+        {currentDataType.toUpperCase()}
         <svg
           className='w-4 h-4 ml-2'
           fill='none'

@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { handleEditRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 
-const Field = () => {
-  const [value, setValue] = useState('Test');
+const Field = ({ item }) => {
+  const dispatch = useDispatch();
+  const { body } = item;
 
   const handleChange = (event) => {
-    setValue(event.target.value);
-    console.log('Input Form changed');
+    dispatch(handleEditRow({ ...item, body: event.target.value }));
   };
 
   const handleBlur = (event) => {
@@ -19,9 +20,9 @@ const Field = () => {
   return (
     <label className='group-hover:bg-gray-200'>
       <input
-        className='h-9 px-3 py-1 rounded-lg bg-gray-100 focus:bg-whitetext-red-400 focus:outline-none'
+        className='h-9 w-40 truncate px-2 py-1 rounded-lg bg-gray-100 focus:bg-white focus:outline-none'
         type='text'
-        value={value}
+        value={body}
         onChange={(event) => handleChange(event)}
         onKeyDown={(event) => handleBlur(event)}
       />

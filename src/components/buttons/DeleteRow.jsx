@@ -1,8 +1,13 @@
 import React from 'react';
 
-const DeleteRow = () => {
+import { useDispatch } from 'react-redux';
+import { handleDeleteRow } from '../../features/fieldNameType/fieldNameTypeSlice';
+
+const DeleteRow = ({ item }) => {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    console.log('Delete row button clicked');
+    dispatch(handleDeleteRow({ id: item?.id }));
   };
 
   return (
