@@ -8,7 +8,7 @@ import dataTypes from '../../constants/dataTypes';
 
 const Row = ({ item, index }) => {
   const { dataType: currentDataType, items } = item;
-  console.log('🚀 ~ file: Row.jsx:13 ~ Row ~ index:', index);
+  // console.log('🚀 ~ file: Row.jsx:13 ~ Row ~ index:', index);
 
   return (
     <>

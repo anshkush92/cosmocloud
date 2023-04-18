@@ -12,7 +12,7 @@ const AddRow = ({ item }) => {
       handleInsertRow({
         parentId: item?.id,
         id: uuidv4(),
-        body: 'New Field',
+        body: 'addName',
         dataType: 'String',
       })
     );
