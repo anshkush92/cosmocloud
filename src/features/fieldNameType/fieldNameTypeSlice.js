@@ -48,7 +48,7 @@ const fieldNameTypeSlice = createSlice({
     // Insert new row -- Borking correctly
     handleInsertRow: (state, action) => {
       const { items } = state;
-      const { id, body, dataType } = action.payload;
+      const { id, body, dataType, parentId } = action.payload;
       const newRow = {
         id,
         body,
@@ -57,18 +57,18 @@ const fieldNameTypeSlice = createSlice({
       };
 
       // Recursive function to find Row by id - Returns the row if found
-      const findRowById = (id, items) => {
+      const findRowById = (parentId, items) => {
         for (let i = 0; i < items.length; i++) {
           console.log(
             '🚀 ~ file: fieldNameTypeSlice.js:75 ~ items[i]:',
             items[i].id,
-            id
+            parentId
           );
-          if (items[i].id === id) {
+          if (items[i].id === parentId) {
             return items[i];
           }
           if (items[i].items) {
-            const result = findRowById(id, items[i].items);
+            const result = findRowById(parentId, items[i].items);
             if (result) {
               return result;
             }
@@ -78,7 +78,7 @@ const fieldNameTypeSlice = createSlice({
       };
 
       // Check if parent row exists
-      const parentRow = findRowById(id, items);
+      const parentRow = findRowById(parentId, items);
 
       // If parent row exists, add new row to its items otherwise add new row to items
       if (parentRow) {

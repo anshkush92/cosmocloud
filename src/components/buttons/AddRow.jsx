@@ -12,7 +12,8 @@ const AddRow = ({ item }) => {
     console.log('Add row button clicked');
     dispatch(
       handleInsertRow({
-        id: item?.id || uuidv4(),
+        parentId: item?.id,
+        id: uuidv4(),
         body: 'New Field',
         dataType: 'String',
       })
