@@ -1,23 +1,22 @@
-// Loop through the rows and find the row with the given id
-const findRowById = (rows, id) => {
-  // Loop through the top level rows
-  for (var i = 0; i < rows.length; i++) {
-    const item = rows[i];
-
-    // If the id matches, return the row
-    if (item.id === id) {
-      return item;
+// Recursive function to find Row by id - Returns the row if found
+const findRowById = (parentId, items) => {
+  for (let i = 0; i < items.length; i++) {
+    console.log(
+      '🚀 ~ file: fieldNameTypeSlice.js:75 ~ items[i]:',
+      items[i].id,
+      parentId
+    );
+    if (items[i].id === parentId) {
+      return items[i];
     }
-
-    // If the id doesn't match, check if the row has children and if children has that id
-    if (item.items) {
-      // Recursively calling the function to check if the id is in the children
-      const result = findRowById(item.items, id);
+    if (items[i].items) {
+      const result = findRowById(parentId, items[i].items);
       if (result) {
         return result;
       }
     }
   }
+  return null;
 };
 
 export default findRowById;

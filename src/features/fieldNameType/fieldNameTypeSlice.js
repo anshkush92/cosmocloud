@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import findRowById from '../../helpers/findByRowId';
 // Trying to create data as given in the mock video but in tree format - items se recursion ho raha hai
 const initialState = {
   id: 0,
@@ -56,26 +57,26 @@ const fieldNameTypeSlice = createSlice({
         items: [],
       };
 
-      // Recursive function to find Row by id - Returns the row if found
-      const findRowById = (parentId, items) => {
-        for (let i = 0; i < items.length; i++) {
-          console.log(
-            '🚀 ~ file: fieldNameTypeSlice.js:75 ~ items[i]:',
-            items[i].id,
-            parentId
-          );
-          if (items[i].id === parentId) {
-            return items[i];
-          }
-          if (items[i].items) {
-            const result = findRowById(parentId, items[i].items);
-            if (result) {
-              return result;
-            }
-          }
-        }
-        return null;
-      };
+      // // Recursive function to find Row by id - Returns the row if found
+      // const findRowById = (parentId, items) => {
+      //   for (let i = 0; i < items.length; i++) {
+      //     console.log(
+      //       '🚀 ~ file: fieldNameTypeSlice.js:75 ~ items[i]:',
+      //       items[i].id,
+      //       parentId
+      //     );
+      //     if (items[i].id === parentId) {
+      //       return items[i];
+      //     }
+      //     if (items[i].items) {
+      //       const result = findRowById(parentId, items[i].items);
+      //       if (result) {
+      //         return result;
+      //       }
+      //     }
+      //   }
+      //   return null;
+      // };
 
       // Check if parent row exists
       const parentRow = findRowById(parentId, items);
