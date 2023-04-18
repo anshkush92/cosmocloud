@@ -10,17 +10,17 @@ const initialState = {
       dataType: 'object',
       items: [
         {
-          id: 1,
+          id: 11,
           body: 'name',
           dataType: 'object',
           items: [
             {
-              id: 1,
+              id: 111,
               body: 'firstName',
               dataType: 'string',
             },
             {
-              id: 1,
+              id: 112,
               body: 'lastName',
               dataType: 'string',
             },
@@ -52,6 +52,23 @@ const fieldNameTypeSlice = createSlice({
       console.log('Handle Edit Row', state, action.payload);
     },
     handleDeleteRow: (state, action) => {
+      const { items } = state;
+      const { id } = action.payload;
+
+      // Recursive function to delete row by id
+      const deleteRowById = (id, items) => {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].id === id) {
+            items.splice(i, 1);
+            return;
+          }
+          if (items[i].items) {
+            deleteRowById(id, items[i].items);
+          }
+        }
+      };
+
+      deleteRowById(id, items);
       console.log('Handle Delete Row', state, action.payload);
     },
   },
