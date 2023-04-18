@@ -18,7 +18,7 @@ import dataTypes from '../../constants/dataTypes';
 const Row = ({ item }) => {
   const dispatch = useDispatch();
   const { dataType, items } = item;
-  console.log('🚀 ~ file: Row.jsx:21 ~ Row ~ item:', item);
+  // console.log('🚀 ~ file: Row.jsx:21 ~ Row ~ item:', item);
 
   const [currentDataType, setCurrentDataType] = useState(
     dataType.toUpperCase()

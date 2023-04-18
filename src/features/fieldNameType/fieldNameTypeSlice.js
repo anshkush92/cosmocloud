@@ -45,6 +45,7 @@ const fieldNameTypeSlice = createSlice({
   name: 'fieldNameType',
   initialState,
   reducers: {
+    // Insert new row -- Borking correctly
     handleInsertRow: (state, action) => {
       const { items } = state;
       const { id, body, dataType } = action.payload;
@@ -90,10 +91,39 @@ const fieldNameTypeSlice = createSlice({
       console.log('Handle Insert Row', state, action.payload);
     },
 
+    // Edit row -- Under development
     handleEditRow: (state, action) => {
+      const { items } = state;
+      const { id, body, dataType } = action.payload;
+
+      // Recursive function to find Row by id - Returns row - always found in this case
+      const findRowById = (id, items) => {
+        for (let i = 0; i < items.length; i++) {
+          console.log(
+            '🚀 ~ file: fieldNameTypeSlice.js:75 ~ items[i]:',
+            items[i].id,
+            id
+          );
+          if (items[i].id === id) {
+            return (items[i] = { ...items[i], body, dataType });
+          }
+          if (items[i].items) {
+            const result = findRowById(id, items[i].items);
+            if (result) {
+              return result;
+            }
+          }
+        }
+        return null;
+      };
+
+      // Check if parent row exists
+      findRowById(id, items);
+
       console.log('Handle Edit Row', state, action.payload);
     },
 
+    // Delete row -- Not Borking correctly
     handleDeleteRow: (state, action) => {
       const { items } = state;
       const { id } = action.payload;

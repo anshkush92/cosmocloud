@@ -5,7 +5,7 @@ import { handleDeleteRow } from '../../features/fieldNameType/fieldNameTypeSlice
 
 const DeleteRow = ({ item }) => {
   const { items } = useSelector((state) => state.fieldNameType);
-  console.log('🚀 ~ file: DeleteRow.jsx:8 ~ DeleteRow ~ items:', items);
+  // console.log('🚀 ~ file: DeleteRow.jsx:8 ~ DeleteRow ~ items:', items);
   const dispatch = useDispatch();
 
   const handleClick = () => {
