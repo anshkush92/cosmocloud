@@ -4,7 +4,7 @@
 
 ## Demo
 
-1. Link
+1. [Link](https://cosmocloud-frontend-task.netlify.app/)
 2. [Video](https://youtu.be/0Up4vv2GGnM)
 
 ## Task
