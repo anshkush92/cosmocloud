@@ -1,19 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addFieldNameType } from '../../features/fieldNameType/fieldNameTypeSlice';
 
 const AddRow = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     console.log('Add row button clicked');
-
-    dispatch(
-      addFieldNameType({
-        body: 'Test',
-        dataType: 'number',
-      })
-    );
   };
 
   return (
