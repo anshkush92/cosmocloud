@@ -16,7 +16,6 @@ import {
 import dataTypes from '../../constants/dataTypes';
 
 const Row = ({ item }) => {
-  console.log('Row.jsx: ', item);
   const dispatch = useDispatch();
   const { dataType, items } = item;
 
@@ -30,7 +29,6 @@ const Row = ({ item }) => {
 
   return (
     <>
-      {console.log('App.jsx start')}
       <div className='flex bg-gray-100 group hover:bg-gray-200 mx-8 p-4 border-b-2 border-gray-300 gap-4 items-center justify-between'>
         <div className='flex'>
           <Field item={item} />
@@ -49,13 +47,11 @@ const Row = ({ item }) => {
         </div>
       </div>
 
-      {console.log('App.jsx middle')}
       <div className='pl-12 mt-2'>
         {items?.map((item, index) => (
           <Row item={item} key={index} />
         ))}
       </div>
-      {console.log('App.jsx end')}
     </>
   );
 };
