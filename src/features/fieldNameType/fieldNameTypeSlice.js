@@ -105,7 +105,11 @@ const fieldNameTypeSlice = createSlice({
             id
           );
           if (items[i].id === id) {
-            return (items[i] = { ...items[i], body, dataType });
+            if (dataType === 'Object') {
+              return (items[i] = { ...items[i], body, dataType });
+            } else {
+              return (items[i] = { ...items[i], body, dataType, items: [] });
+            }
           }
           if (items[i].items) {
             const result = findRowById(id, items[i].items);

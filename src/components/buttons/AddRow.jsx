@@ -1,11 +1,9 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { handleInsertRow } from '../../features/fieldNameType/fieldNameTypeSlice';
 
 const AddRow = ({ item }) => {
-  const { items } = useSelector((state) => state.fieldNameType);
-  // console.log('AddRow.jsx: ', item);
   const dispatch = useDispatch();
 
   const handleClick = () => {
